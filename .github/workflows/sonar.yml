@@ -36,5 +36,5 @@ jobs:
         run: |
           mvn sonar:sonar \
             -Dsonar.projectKey=gunarathneugnu214073t_lab2 \
-            -Dsonar.organization=GunarathneUGNU214073T \
+            -Dsonar.organization=gunarathneugnu214073t \
             -Dsonar.host.url=https://sonarcloud.io
