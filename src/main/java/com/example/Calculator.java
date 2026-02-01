@@ -1,6 +1,6 @@
-// package main.java.com.example;
+package com.example;
 
-// public class Calculator {
+ public class Calculator {
 
 //     // Code Smell: Long method + high complexity
 //     public int calculate(int a, int b, String op) {
@@ -39,7 +39,7 @@
 
 
 // EVEN WORSE: longer, more complex, duplicated logic
-public int calculate(int a, int b, String op) {
+ public int calculate(int a, int b, String op) {
 if(op.equals("add")) {
 return a + b;
 } else if(op.equals("add-again")) {
@@ -68,3 +68,4 @@ return result;
 return 0;
 }
 }
+ }
