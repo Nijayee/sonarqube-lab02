@@ -38,48 +38,33 @@
 // }
 
 
-name: SonarCloud Analysis
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened]
-
-jobs:
-  build:
-    name: Build and Analyze
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-
-      - name: Build with Maven
-        run: mvn -B verify
-
-      - name: SonarCloud Scan
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn sonar:sonar \
-            -Dsonar.projectKey=YOUR_PROJECT_KEY \
-            -Dsonar.organization=YOUR_ORG_KEY \
-            -Dsonar.host.url=https://sonarcloud.io
+// EVEN WORSE: longer, more complex, duplicated logic
+public int calculate(int a, int b, String op) {
+if(op.equals("add")) {
+return a + b;
+} else if(op.equals("add-again")) {
+return a + b; // DUPLICATION
+} else if(op.equals("sub")) {
+return a - b;
+} else if(op.equals("sub-again")) {
+return a - b; // DUPLICATION
+} else if(op.equals("mul")) {
+return a * b;
+} else if(op.equals("div")) {
+if(b == 0) {
+return 0;
+} else {
+return a / b;
+}
+} else if(op.equals("mod")) {
+return a % b;
+} else if(op.equals("pow")) {
+int result = 1;
+for(int i = 0; i < b; i++) {
+result = result * a;
+}
+return result;
+} else {
+return 0;
+}
+}
